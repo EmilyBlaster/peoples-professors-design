@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The People's Professors — Design System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Permanent+Marker&family=Work+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #f5f0e6;
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --gray: #888888;
+            --riso-pink: #ff6b9d;
+            --riso-blue: #0078bf;
+            --riso-yellow: #ffe042;
+            --font-typewriter: 'Courier Prime', 'Courier New', monospace;
+            --font-marker: 'Permanent Marker', cursive;
+            --font-sans: 'Work Sans', -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-typewriter);
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: var(--font-sans);
+            font-weight: 900;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 span {
+            font-family: var(--font-marker);
+            text-transform: none;
+            color: var(--riso-pink);
+            display: block;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--ink-light);
+            margin-bottom: 3rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            border: 3px solid var(--ink);
+            padding: 2rem 1.5rem;
+            text-decoration: none;
+            color: var(--ink);
+            position: relative;
+            box-shadow: 6px 6px 0 var(--ink);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:first-child {
+            transform: rotate(-2deg);
+        }
+
+        .card:last-child {
+            transform: rotate(1.5deg);
+        }
+
+        .card:hover {
+            transform: rotate(0deg) translateY(-4px);
+            box-shadow: 8px 8px 0 var(--ink);
+        }
+
+        .card-label {
+            display: inline-block;
+            background: var(--riso-yellow);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .card:last-child .card-label {
+            background: var(--riso-pink);
+        }
+
+        .card-title {
+            font-family: var(--font-sans);
+            font-weight: 800;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            line-height: 1.5;
+        }
+
+        footer {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        footer a {
+            color: var(--riso-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The People's <span>Professors</span></h1>
+        <p class="subtitle">Design System & Documentation</p>
+
+        <div class="card-grid">
+            <a href="style-guide.html" class="card">
+                <span class="card-label">Documentation</span>
+                <h2 class="card-title">Style Guide</h2>
+                <p class="card-desc">Colors, typography, spacing, and design principles for the zine aesthetic.</p>
+            </a>
+
+            <a href="component-library.html" class="card">
+                <span class="card-label">Reference</span>
+                <h2 class="card-title">Component Library</h2>
+                <p class="card-desc">Copy-paste HTML/CSS for headers, callouts, cards, stickers, and more.</p>
+            </a>
+        </div>
+
+        <footer>
+            Emily Green Design | Full Sail University Capstone | 2026
+        </footer>
+    </div>
+</body>
+</html>
