@@ -7,9 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Permanent+Marker&family=Work+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        /* ================================
-           CSS VARIABLES & RESET
-        ================================ */
         :root {
             --paper: #f5f0e6;
             --newsprint: #e8e3d9;
@@ -24,780 +21,164 @@
             --font-marker: 'Permanent Marker', cursive;
             --font-sans: 'Work Sans', -apple-system, sans-serif;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-typewriter);
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--ink);
-            background: var(--paper);
-        }
-
-        /* Grain overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 10000;
-        }
-
-        /* ================================
-           1. HERO SECTION
-        ================================ */
-        .pp-hero {
-            padding: 40px 20px 60px;
-            position: relative;
-        }
-
-        .pp-hero-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .pp-top-label {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .pp-top-label span {
-            display: inline-block;
-            background: var(--riso-yellow);
-            padding: 8px 20px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            font-weight: 700;
-            transform: rotate(-1deg);
-            border: 2px solid var(--ink);
-        }
-
-        .pp-cover-container {
-            position: relative;
-            transform: rotate(-0.5deg);
-        }
-
-        .pp-tape {
-            position: absolute;
-            height: 24px;
-            background: rgba(255, 224, 66, 0.75);
-            border: 1px solid rgba(0,0,0,0.08);
-            z-index: 10;
-        }
-
-        .pp-tape-1 {
-            top: -12px;
-            left: 80px;
-            width: 70px;
-            transform: rotate(-4deg);
-        }
-
-        .pp-tape-2 {
-            top: -10px;
-            right: 100px;
-            width: 60px;
-            height: 22px;
-            transform: rotate(3deg);
-        }
-
-        .pp-cover-frame {
-            background: white;
-            border: 3px solid var(--ink);
-            padding: 12px;
-            box-shadow: 10px 12px 0 rgba(0,0,0,0.1);
-        }
-
-        .pp-cover-frame img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .pp-corner-badge {
-            position: absolute;
-            bottom: -20px;
-            right: -15px;
-            width: 100px;
-            height: 100px;
-            background: var(--riso-pink);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: rotate(12deg);
-            border: 3px solid var(--ink);
-            box-shadow: 4px 5px 0 rgba(0,0,0,0.15);
-            z-index: 20;
-            font-family: var(--font-marker);
-            font-size: 0.65rem;
-            color: white;
-            text-align: center;
-            line-height: 1.3;
-            text-transform: uppercase;
-        }
-
-        /* ================================
-           2. THESIS SECTION
-        ================================ */
-        .pp-thesis-section {
-            padding: 60px 20px;
-            background: var(--newsprint);
-        }
-
-        .pp-thesis-inner {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .pp-thesis-callout {
-            background: var(--riso-yellow);
-            padding: 25px 30px;
-            transform: rotate(0.5deg);
-            box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
-            position: relative;
-            text-align: center;
-        }
-
-        .pp-callout-tape {
-            position: absolute;
-            height: 20px;
-            background: rgba(255,255,255,0.6);
-            border: 1px solid rgba(0,0,0,0.1);
-            z-index: 10;
-        }
-
-        .pp-callout-tape-1 {
-            top: -10px;
-            left: 30px;
-            width: 50px;
-            transform: rotate(-3deg);
-        }
-
-        .pp-callout-tape-2 {
-            top: -8px;
-            right: 40px;
-            width: 45px;
-            height: 18px;
-            transform: rotate(2deg);
-        }
-
-        .pp-thesis-quote {
-            font-family: var(--font-marker);
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-        }
-
-        .pp-thesis-desc {
-            font-size: 1rem;
-            color: var(--ink-light);
-        }
-
-        /* ================================
-           3. FEATURES SECTION
-        ================================ */
-        .pp-features-section {
-            padding: 60px 20px;
-            background: var(--paper);
-        }
-
-        .pp-features-inner {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .pp-section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .pp-section-header h2 {
-            font-family: var(--font-sans);
-            font-weight: 900;
-            font-size: 1.75rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .pp-section-header p {
-            color: var(--ink-light);
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .pp-features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .pp-feature-card {
-            background: white;
-            border: 2px solid var(--ink);
-            padding: 25px;
-            transition: transform 0.2s ease;
-        }
-
-        .pp-feature-card:nth-child(1) {
-            transform: rotate(-1deg);
-            box-shadow: 5px 5px 0 var(--riso-blue);
-        }
-
-        .pp-feature-card:nth-child(2) {
-            transform: rotate(0.5deg);
-            box-shadow: 5px 5px 0 var(--riso-pink);
-        }
-
-        .pp-feature-card:nth-child(3) {
-            transform: rotate(-0.5deg);
-            box-shadow: 5px 5px 0 var(--riso-green);
-        }
-
-        .pp-feature-card:hover {
-            transform: rotate(0deg) translateY(-3px);
-        }
-
-        .pp-feature-emoji {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-
-        .pp-feature-title {
-            font-family: var(--font-sans);
-            font-weight: 800;
-            font-size: 1rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .pp-feature-desc {
-            font-size: 0.9rem;
-            color: var(--ink-light);
-            line-height: 1.6;
-        }
-
-        /* ================================
-           4. STICKERS SECTION
-        ================================ */
-        .pp-stickers-section {
-            padding: 60px 20px;
-            background: var(--newsprint);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pp-stickers-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .pp-stickers-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .pp-sticker-item {
-            width: 120px;
-            transition: transform 0.3s ease;
-        }
-
-        .pp-sticker-item:hover {
-            transform: scale(1.08) rotate(3deg);
-        }
-
-        .pp-sticker-item img {
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(3px 4px 0 rgba(0,0,0,0.15));
-        }
-
-        .pp-sticker-label {
-            font-family: var(--font-typewriter);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-top: 8px;
-            color: var(--ink-light);
-        }
-
-        /* ================================
-           5. CTA SECTION (Primary)
-        ================================ */
-        .pp-cta-section {
-            padding: 60px 20px;
-            background: var(--paper);
-            text-align: center;
-        }
-
-        .pp-cta-inner {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .pp-cta-text {
-            font-family: var(--font-marker);
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            color: var(--ink);
-        }
-
-        .pp-btn {
-            font-family: var(--font-sans);
-            font-weight: 700;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 18px 36px;
-            border: 3px solid var(--ink);
-            cursor: pointer;
-            transition: all 0.15s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .pp-btn-primary {
-            background: var(--riso-pink);
-            color: white;
-            box-shadow: 5px 5px 0 var(--ink);
-        }
-
-        .pp-btn-primary:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 8px 8px 0 var(--ink);
-        }
-
-        /* ================================
-           BONUS CONTENT DIVIDER
-        ================================ */
-        .pp-bonus-divider {
-            padding: 40px 20px;
-            background: var(--newsprint);
-            text-align: center;
-            border-top: 3px dashed var(--gray);
-        }
-
-        .pp-bonus-divider span {
-            font-family: var(--font-typewriter);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--gray);
-        }
-
-        /* ================================
-           6. ZINE PHILOSOPHY SECTION
-        ================================ */
-        .pp-philosophy-section {
-            padding: 60px 20px;
-            background: var(--newsprint);
-        }
-
-        .pp-philosophy-inner {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .pp-zine-philosophy {
-            background: white;
-            border: 3px solid var(--ink);
-            padding: 35px 40px;
-            position: relative;
-            transform: rotate(-0.5deg);
-            box-shadow: 8px 8px 0 var(--riso-yellow);
-        }
-
-        .pp-zine-tape {
-            position: absolute;
-            height: 22px;
-            background: rgba(255, 224, 66, 0.75);
-            border: 1px solid rgba(0,0,0,0.08);
-            z-index: 10;
-        }
-
-        .pp-zine-tape-1 {
-            top: -11px;
-            left: 40px;
-            width: 55px;
-            transform: rotate(-4deg);
-        }
-
-        .pp-zine-tape-2 {
-            top: -9px;
-            right: 50px;
-            width: 50px;
-            transform: rotate(3deg);
-        }
-
-        .pp-zine-intro {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .pp-marker {
-            font-family: var(--font-marker);
-            color: var(--riso-pink);
-        }
-
-        .pp-highlight {
-            background: var(--riso-yellow);
-            padding: 2px 6px;
-        }
-
-        .pp-comparison-table {
-            margin: 30px 0;
-            border: 2px solid var(--ink);
-            background: var(--newsprint);
-        }
-
-        .pp-comparison-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: var(--ink);
-            color: white;
-        }
-
-        .pp-comparison-header .pp-comparison-col {
-            padding: 12px 20px;
-            font-family: var(--font-sans);
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .pp-comparison-header .pp-comparison-col:first-child {
-            border-right: 2px solid var(--ink-light);
-        }
-
-        .pp-comparison-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            border-bottom: 1px dashed var(--gray);
-        }
-
-        .pp-comparison-row:last-child {
-            border-bottom: none;
-        }
-
-        .pp-comparison-cell {
-            padding: 14px 20px;
-            font-size: 0.95rem;
-            text-align: center;
-        }
-
-        .pp-comparison-cell:first-child {
-            border-right: 2px dashed var(--gray);
-        }
-
-        .pp-zine-conclusion {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px dashed var(--gray);
-        }
-
-        /* ================================
-           7. RESEARCH SECTION
-        ================================ */
-        .pp-research-section {
-            padding: 60px 20px;
-            background: var(--paper);
-        }
-
-        .pp-research-inner {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .pp-research-box {
-            background: white;
-            border-left: 4px solid var(--riso-blue);
-            padding: 20px 25px;
-        }
-
-        .pp-research-label {
-            font-family: var(--font-sans);
-            font-weight: 700;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--riso-blue);
-            margin-bottom: 8px;
-        }
-
-        .pp-research-box p {
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* ================================
-           8. DESIGN SYSTEM SECTION
-        ================================ */
-        .pp-design-section {
-            padding: 60px 20px;
-            background: var(--newsprint);
-        }
-
-        .pp-design-inner {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .pp-design-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .pp-design-header h2 {
-            font-family: var(--font-sans);
-            font-weight: 900;
-            font-size: 1.75rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .pp-design-header p {
-            color: var(--ink-light);
-            max-width: 550px;
-            margin: 0 auto;
-        }
-
-        .pp-design-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .pp-design-card {
-            background: white;
-            border: 3px solid var(--ink);
-            padding: 30px;
-            position: relative;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            color: var(--ink);
-            display: block;
-        }
-
-        .pp-design-card:nth-child(1) {
-            transform: rotate(-1.5deg);
-            box-shadow: 6px 6px 0 var(--riso-pink);
-        }
-
-        .pp-design-card:nth-child(2) {
-            transform: rotate(1deg);
-            box-shadow: 6px 6px 0 var(--riso-blue);
-        }
-
-        .pp-design-card:hover {
-            transform: rotate(0deg) translateY(-5px);
-            box-shadow: 8px 10px 0 var(--ink);
-        }
-
-        .pp-design-card::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 25px;
-            width: 50px;
-            height: 20px;
-            background: rgba(255, 224, 66, 0.75);
-            border: 1px solid rgba(0,0,0,0.08);
-            transform: rotate(-3deg);
-        }
-
-        .pp-design-card-label {
-            display: inline-block;
-            background: var(--riso-yellow);
-            padding: 4px 12px;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            transform: rotate(-1deg);
-        }
-
-        .pp-design-card h3 {
-            font-family: var(--font-marker);
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--ink);
-        }
-
-        .pp-design-card p {
-            font-size: 0.9rem;
-            color: var(--ink-light);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .pp-design-card-link {
-            font-family: var(--font-sans);
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            color: var(--riso-pink);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .pp-design-card-link::after {
-            content: '→';
-            transition: transform 0.2s ease;
-        }
-
-        .pp-design-card:hover .pp-design-card-link::after {
-            transform: translateX(4px);
-        }
-
-        /* ================================
-           FOOTER
-        ================================ */
-        .pp-footer {
-            padding: 30px 20px;
-            background: var(--ink);
-            color: var(--gray);
-            text-align: center;
-            font-size: 0.85rem;
-        }
-
-        .pp-footer a {
-            color: var(--riso-pink);
-            text-decoration: none;
-        }
-
-        .pp-footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* ================================
-           RESPONSIVE
-        ================================ */
-        @media (max-width: 768px) {
-            .pp-sticker-item {
-                width: 90px;
-            }
-            .pp-design-grid {
-                gap: 25px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .pp-tape-1 { left: 30px; }
-            .pp-tape-2 { right: 30px; }
-            .pp-corner-badge { width: 80px; height: 80px; font-size: 0.55rem; }
-            .pp-thesis-quote { font-size: 1.2rem; }
-            .pp-btn { padding: 15px 28px; font-size: 0.9rem; }
-            .pp-sticker-item { width: 70px; }
-            .pp-section-header h2 { font-size: 1.4rem; }
-            .pp-design-header h2 { font-size: 1.4rem; }
-            .pp-design-card h3 { font-size: 1.3rem; }
-            .pp-zine-philosophy { padding: 25px 20px; }
-            .pp-zine-intro, .pp-zine-conclusion { font-size: 0.95rem; }
-            .pp-comparison-cell { padding: 12px 10px; font-size: 0.85rem; }
-            .pp-comparison-header .pp-comparison-col { padding: 10px; font-size: 0.8rem; }
-            .pp-cta-text { font-size: 1.1rem; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-typewriter); font-size: 16px; line-height: 1.6; color: var(--ink); background: var(--paper); }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 10000; }
+        .pp-hero { padding: 40px 20px 60px; position: relative; }
+        .pp-hero-inner { max-width: 1000px; margin: 0 auto; }
+        .pp-top-label { text-align: center; margin-bottom: 30px; }
+        .pp-top-label span { display: inline-block; background: var(--riso-yellow); padding: 8px 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; transform: rotate(-1deg); border: 2px solid var(--ink); }
+        .pp-cover-container { position: relative; transform: rotate(-0.5deg); }
+        .pp-tape { position: absolute; height: 24px; background: rgba(255, 224, 66, 0.75); border: 1px solid rgba(0,0,0,0.08); z-index: 10; }
+        .pp-tape-1 { top: -12px; left: 80px; width: 70px; transform: rotate(-4deg); }
+        .pp-tape-2 { top: -10px; right: 100px; width: 60px; height: 22px; transform: rotate(3deg); }
+        .pp-cover-frame { background: white; border: 3px solid var(--ink); padding: 12px; box-shadow: 10px 12px 0 rgba(0,0,0,0.1); }
+        .pp-cover-frame img { width: 100%; height: auto; display: block; }
+        .pp-corner-badge { position: absolute; bottom: -20px; right: -15px; width: 100px; height: 100px; background: var(--riso-pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; transform: rotate(12deg); border: 3px solid var(--ink); box-shadow: 4px 5px 0 rgba(0,0,0,0.15); z-index: 20; font-family: var(--font-marker); font-size: 0.65rem; color: white; text-align: center; line-height: 1.3; text-transform: uppercase; }
+        .pp-thesis-section { padding: 60px 20px; background: var(--newsprint); }
+        .pp-thesis-inner { max-width: 900px; margin: 0 auto; }
+        .pp-thesis-callout { background: var(--riso-yellow); padding: 25px 30px; transform: rotate(0.5deg); box-shadow: 5px 5px 0 rgba(0,0,0,0.1); position: relative; text-align: center; }
+        .pp-callout-tape { position: absolute; height: 20px; background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.1); z-index: 10; }
+        .pp-callout-tape-1 { top: -10px; left: 30px; width: 50px; transform: rotate(-3deg); }
+        .pp-callout-tape-2 { top: -8px; right: 40px; width: 45px; height: 18px; transform: rotate(2deg); }
+        .pp-thesis-quote { font-family: var(--font-marker); font-size: 1.4rem; margin-bottom: 8px; }
+        .pp-thesis-desc { font-size: 1rem; color: var(--ink-light); }
+        .pp-features-section { padding: 60px 20px; background: var(--paper); }
+        .pp-features-inner { max-width: 900px; margin: 0 auto; }
+        .pp-section-header { text-align: center; margin-bottom: 40px; }
+        .pp-section-header h2 { font-family: var(--font-sans); font-weight: 900; font-size: 1.75rem; text-transform: uppercase; margin-bottom: 10px; }
+        .pp-section-header p { color: var(--ink-light); max-width: 500px; margin: 0 auto; }
+        .pp-features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .pp-feature-card { background: white; border: 2px solid var(--ink); padding: 25px; transition: transform 0.2s ease; }
+        .pp-feature-card:nth-child(1) { transform: rotate(-1deg); box-shadow: 5px 5px 0 var(--riso-blue); }
+        .pp-feature-card:nth-child(2) { transform: rotate(0.5deg); box-shadow: 5px 5px 0 var(--riso-pink); }
+        .pp-feature-card:nth-child(3) { transform: rotate(-0.5deg); box-shadow: 5px 5px 0 var(--riso-green); }
+        .pp-feature-card:hover { transform: rotate(0deg) translateY(-3px); }
+        .pp-feature-emoji { font-size: 2.5rem; margin-bottom: 12px; }
+        .pp-feature-title { font-family: var(--font-sans); font-weight: 800; font-size: 1rem; text-transform: uppercase; margin-bottom: 10px; }
+        .pp-feature-desc { font-size: 0.9rem; color: var(--ink-light); line-height: 1.6; }
+        .pp-stickers-section { padding: 60px 20px; background: var(--newsprint); position: relative; overflow: hidden; }
+        .pp-stickers-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+        .pp-stickers-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 30px; }
+        .pp-sticker-item { width: 120px; transition: transform 0.3s ease; }
+        .pp-sticker-item:hover { transform: scale(1.08) rotate(3deg); }
+        .pp-sticker-item img { width: 100%; height: auto; filter: drop-shadow(3px 4px 0 rgba(0,0,0,0.15)); }
+        .pp-sticker-label { font-family: var(--font-typewriter); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-top: 8px; color: var(--ink-light); }
+        .pp-cta-section { padding: 60px 20px; background: var(--paper); text-align: center; }
+        .pp-cta-inner { max-width: 600px; margin: 0 auto; }
+        .pp-cta-text { font-family: var(--font-marker); font-size: 1.3rem; margin-bottom: 25px; color: var(--ink); }
+        .pp-btn { font-family: var(--font-sans); font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 18px 36px; border: 3px solid var(--ink); cursor: pointer; transition: all 0.15s ease; text-decoration: none; display: inline-block; }
+        .pp-btn-primary { background: var(--riso-pink); color: white; box-shadow: 5px 5px 0 var(--ink); }
+        .pp-btn-primary:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--ink); }
+        .pp-bonus-divider { padding: 40px 20px; background: var(--newsprint); text-align: center; border-top: 3px dashed var(--gray); }
+        .pp-bonus-divider span { font-family: var(--font-typewriter); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gray); }
+        .pp-philosophy-section { padding: 60px 20px; background: var(--newsprint); }
+        .pp-philosophy-inner { max-width: 900px; margin: 0 auto; }
+        .pp-zine-philosophy { background: white; border: 3px solid var(--ink); padding: 35px 40px; position: relative; transform: rotate(-0.5deg); box-shadow: 8px 8px 0 var(--riso-yellow); }
+        .pp-zine-tape { position: absolute; height: 22px; background: rgba(255, 224, 66, 0.75); border: 1px solid rgba(0,0,0,0.08); z-index: 10; }
+        .pp-zine-tape-1 { top: -11px; left: 40px; width: 55px; transform: rotate(-4deg); }
+        .pp-zine-tape-2 { top: -9px; right: 50px; width: 50px; transform: rotate(3deg); }
+        .pp-zine-intro { font-size: 1.05rem; line-height: 1.8; margin-bottom: 30px; }
+        .pp-marker { font-family: var(--font-marker); color: var(--riso-pink); }
+        .pp-highlight { background: var(--riso-yellow); padding: 2px 6px; }
+        .pp-comparison-table { margin: 30px 0; border: 2px solid var(--ink); background: var(--newsprint); }
+        .pp-comparison-header { display: grid; grid-template-columns: 1fr 1fr; background: var(--ink); color: white; }
+        .pp-comparison-header .pp-comparison-col { padding: 12px 20px; font-family: var(--font-sans); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; text-align: center; }
+        .pp-comparison-header .pp-comparison-col:first-child { border-right: 2px solid var(--ink-light); }
+        .pp-comparison-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px dashed var(--gray); }
+        .pp-comparison-row:last-child { border-bottom: none; }
+        .pp-comparison-cell { padding: 14px 20px; font-size: 0.95rem; text-align: center; }
+        .pp-comparison-cell:first-child { border-right: 2px dashed var(--gray); }
+        .pp-zine-conclusion { font-size: 1.05rem; line-height: 1.8; margin-top: 30px; padding-top: 20px; border-top: 2px dashed var(--gray); }
+        .pp-research-section { padding: 60px 20px; background: var(--paper); }
+        .pp-research-inner { max-width: 900px; margin: 0 auto; }
+        .pp-research-box { background: white; border-left: 4px solid var(--riso-blue); padding: 20px 25px; }
+        .pp-research-label { font-family: var(--font-sans); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--riso-blue); margin-bottom: 8px; }
+        .pp-research-box p { font-size: 0.95rem; line-height: 1.7; }
+        .pp-design-section { padding: 60px 20px; background: var(--newsprint); }
+        .pp-design-inner { max-width: 900px; margin: 0 auto; }
+        .pp-design-header { text-align: center; margin-bottom: 40px; }
+        .pp-design-header h2 { font-family: var(--font-sans); font-weight: 900; font-size: 1.75rem; text-transform: uppercase; margin-bottom: 10px; }
+        .pp-design-header p { color: var(--ink-light); max-width: 550px; margin: 0 auto; }
+        .pp-design-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .pp-design-card { background: white; border: 3px solid var(--ink); padding: 30px; position: relative; transition: all 0.2s ease; text-decoration: none; color: var(--ink); display: block; }
+        .pp-design-card:nth-child(1) { transform: rotate(-1.5deg); box-shadow: 6px 6px 0 var(--riso-pink); }
+        .pp-design-card:nth-child(2) { transform: rotate(1deg); box-shadow: 6px 6px 0 var(--riso-blue); }
+        .pp-design-card:nth-child(3) { transform: rotate(-0.5deg); box-shadow: 6px 6px 0 var(--riso-green); }
+        .pp-design-card:hover { transform: rotate(0deg) translateY(-5px); box-shadow: 8px 10px 0 var(--ink); }
+        .pp-design-card::before { content: ''; position: absolute; top: -10px; left: 25px; width: 50px; height: 20px; background: rgba(255, 224, 66, 0.75); border: 1px solid rgba(0,0,0,0.08); transform: rotate(-3deg); }
+        .pp-design-card-label { display: inline-block; background: var(--riso-yellow); padding: 4px 12px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 15px; transform: rotate(-1deg); }
+        .pp-design-card h3 { font-family: var(--font-marker); font-size: 1.5rem; margin-bottom: 12px; color: var(--ink); }
+        .pp-design-card p { font-size: 0.9rem; color: var(--ink-light); line-height: 1.6; margin-bottom: 20px; }
+        .pp-design-card-link { font-family: var(--font-sans); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: var(--riso-pink); display: inline-flex; align-items: center; gap: 8px; }
+        .pp-design-card-link::after { content: '→'; transition: transform 0.2s ease; }
+        .pp-design-card:hover .pp-design-card-link::after { transform: translateX(4px); }
+        .pp-footer { padding: 30px 20px; background: var(--ink); color: var(--gray); text-align: center; font-size: 0.85rem; }
+        .pp-footer a { color: var(--riso-pink); text-decoration: none; }
+        .pp-footer a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .pp-sticker-item { width: 90px; } }
+        @media (max-width: 600px) { .pp-tape-1 { left: 30px; } .pp-tape-2 { right: 30px; } .pp-corner-badge { width: 80px; height: 80px; font-size: 0.55rem; } .pp-thesis-quote { font-size: 1.2rem; } .pp-btn { padding: 15px 28px; font-size: 0.9rem; } .pp-sticker-item { width: 70px; } .pp-section-header h2 { font-size: 1.4rem; } .pp-design-header h2 { font-size: 1.4rem; } .pp-design-card h3 { font-size: 1.3rem; } .pp-zine-philosophy { padding: 25px 20px; } .pp-zine-intro, .pp-zine-conclusion { font-size: 0.95rem; } .pp-comparison-cell { padding: 12px 10px; font-size: 0.85rem; } .pp-comparison-header .pp-comparison-col { padding: 10px; font-size: 0.8rem; } .pp-cta-text { font-size: 1.1rem; } }
     </style>
 </head>
 <body>
 
-    <!-- 1. HERO -->
     <section class="pp-hero">
         <div class="pp-hero-inner">
-            
-            <div class="pp-top-label">
-                <span>✨ Interactive Learning Experience</span>
-            </div>
-
+            <div class="pp-top-label"><span>✨ Interactive Learning Experience</span></div>
             <div class="pp-cover-container">
                 <div class="pp-tape pp-tape-1"></div>
                 <div class="pp-tape pp-tape-2"></div>
-                
                 <div class="pp-cover-frame">
                     <img src="https://i.ibb.co/4g3ywH48/The-People-s-Professor-Cover-Screen-8.png" alt="The People's Professors - Content Creator Strategies for Learning Design">
                 </div>
-
-                <div class="pp-corner-badge">
-                    Masters of<br>Science<br>Capstone<br>2026
-                </div>
+                <div class="pp-corner-badge">Masters of<br>Science<br>Capstone<br>2026</div>
             </div>
         </div>
     </section>
 
-    <!-- 2. THESIS -->
     <section class="pp-thesis-section">
         <div class="pp-thesis-inner">
-            
             <div class="pp-thesis-callout">
                 <div class="pp-callout-tape pp-callout-tape-1"></div>
                 <div class="pp-callout-tape pp-callout-tape-2"></div>
                 <p class="pp-thesis-quote">"The algorithm has become the new syllabus."</p>
                 <p class="pp-thesis-desc">Learn the 5 strategies TikTok creators use to teach millions—and apply them to workplace nano-learning.</p>
             </div>
-
         </div>
     </section>
 
-    <!-- 3. FEATURES -->
     <section class="pp-features-section">
         <div class="pp-features-inner">
-            
             <div class="pp-section-header">
                 <h2>What's Inside</h2>
                 <p>A learning experience built different — here's what you'll find.</p>
             </div>
-
             <div class="pp-features-grid">
                 <div class="pp-feature-card">
                     <div class="pp-feature-emoji">📱</div>
                     <h3 class="pp-feature-title">DIY Zine Aesthetic</h3>
                     <p class="pp-feature-desc">A handmade, photocopied look that connects to a history of grassroots publishing — because education doesn't need to be slick to be effective.</p>
                 </div>
-                
                 <div class="pp-feature-card">
                     <div class="pp-feature-emoji">⭐</div>
                     <h3 class="pp-feature-title">Gamified Sticker System</h3>
                     <p class="pp-feature-desc">Earn a collectible sticker each time you master a strategy section. Track your progress as you build your collection.</p>
                 </div>
-                
                 <div class="pp-feature-card">
                     <div class="pp-feature-emoji">🤖</div>
                     <h3 class="pp-feature-title">"The Algorithm" Chatbot</h3>
                     <p class="pp-feature-desc">Your learning sidekick. Ask questions, get tips, and explore the ideas behind each creator strategy.</p>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- 4. STICKERS -->
     <section class="pp-stickers-section">
         <div class="pp-stickers-inner">
-            
             <div class="pp-section-header">
                 <h2>Collect All 5 Strategy Stickers</h2>
                 <p>Master each creator strategy and earn your sticker. Can you collect them all?</p>
             </div>
-
             <div class="pp-stickers-grid">
                 <div class="pp-sticker-item">
                     <img src="https://i.ibb.co/PG5NQnWN/hook.png" alt="Hook Strategy Sticker">
@@ -820,11 +201,9 @@
                     <div class="pp-sticker-label">Sequencing</div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- 5. CTA (Primary) -->
     <section class="pp-cta-section">
         <div class="pp-cta-inner">
             <p class="pp-cta-text">Ready to see what TikTok can teach us about teaching?</p>
@@ -832,21 +211,16 @@
         </div>
     </section>
 
-    <!-- BONUS CONTENT DIVIDER -->
     <div class="pp-bonus-divider">
         <span>↓ Keep scrolling for the nerdy stuff ↓</span>
     </div>
 
-    <!-- 6. ZINE PHILOSOPHY -->
     <section class="pp-philosophy-section">
         <div class="pp-philosophy-inner">
-            
             <div class="pp-zine-philosophy">
                 <div class="pp-zine-tape pp-zine-tape-1"></div>
                 <div class="pp-zine-tape pp-zine-tape-2"></div>
-                
                 <p class="pp-zine-intro">Think about it. <span class="pp-marker">Zines were the original democratization of publishing.</span> Before the internet, anyone with a photocopier could become a publisher and bypass traditional gatekeepers. That's exactly what content creators are doing now — they're democratizing education by bypassing traditional academia.</p>
-                
                 <div class="pp-comparison-table">
                     <div class="pp-comparison-header">
                         <div class="pp-comparison-col">📄 Zines</div>
@@ -869,34 +243,26 @@
                         <div class="pp-comparison-cell">Algorithm distributed</div>
                     </div>
                 </div>
-                
                 <p class="pp-zine-conclusion">The DIY scrapbook look isn't just for aesthetics. <span class="pp-highlight">It IS the argument, visually.</span> The medium reinforces the message: education doesn't need to be slick and institutional to be effective.</p>
             </div>
-
         </div>
     </section>
 
-    <!-- 7. RESEARCH -->
     <section class="pp-research-section">
         <div class="pp-research-inner">
-            
             <div class="pp-research-box">
                 <div class="pp-research-label">📚 Research Foundation</div>
                 <p>Grounded in <strong>Mayer's Multimedia Principles</strong>, <strong>Merrill's First Principles of Instruction</strong>, <strong>Vygotsky's scaffolding theory</strong>, and research on TikTok as nano-learning (Khlaif & Salha, 2021) and participatory culture (Jenkins et al., 2009).</p>
             </div>
-
         </div>
     </section>
 
-    <!-- 8. DESIGN SYSTEM -->
     <section class="pp-design-section">
         <div class="pp-design-inner">
-            
             <div class="pp-design-header">
                 <h2>📐 Design System</h2>
                 <p>Want to peek behind the curtain? Explore the documentation for the zine aesthetic.</p>
             </div>
-
             <div class="pp-design-grid">
                 <a href="style-guide.html" class="pp-design-card">
                     <span class="pp-design-card-label">Documentation</span>
@@ -904,19 +270,22 @@
                     <p>Colors, typography, spacing, rotation tokens, and the design philosophy behind the look.</p>
                     <span class="pp-design-card-link">View Style Guide</span>
                 </a>
-                
                 <a href="component-library.html" class="pp-design-card">
                     <span class="pp-design-card-label">Reference</span>
                     <h3>Component Library</h3>
                     <p>Copy-paste HTML/CSS for headers, callouts, cards, buttons, stickers, and more.</p>
                     <span class="pp-design-card-link">View Components</span>
                 </a>
+                <a href="how-i-built-it.html" class="pp-design-card">
+                    <span class="pp-design-card-label">Build Log</span>
+                    <h3>How I Built It</h3>
+                    <p>The full story — thesis, design system, Figma assets, Rise + Mighty, the chatbot, and what I learned.</p>
+                    <span class="pp-design-card-link">Read the Build Log</span>
+                </a>
             </div>
-
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="pp-footer">
         <p>The People's Professors — <a href="https://emilygreendesign.com" target="_blank">Emily Green Design</a> | Full Sail University Capstone | 2026</p>
     </footer>
